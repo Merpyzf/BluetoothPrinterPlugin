@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="com.zijin.plugin.bleprinterPlugin" version="1.0.0" 
+    xmlns="http://apache.org/cordova/ns/plugins/1.0" 
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>BlePrinterPlugin</name>
+    <js-module name="BlePrinterPlugin" src="www/BlePrinterPlugin.js">
+        <clobbers target="cordova.plugins.BlePrinterPlugin" />
+    </js-module>
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="BlePrinterPlugin">
+                <param name="android-package" value="com.zijin.plugin.bleprinterPlugin.BlePrinterPlugin" />
+            </feature>
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.BLUETOOTH"/>
+            <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+        </config-file>
+        <source-file src="src/android/libs/androidprintsdk.jar" target-dir="libs" />
+        <source-file src="src/android/libs/gson-2.8.5.jar" target-dir="libs" />
+        <source-file src="src/android/BlePrinterPlugin.java" target-dir="src/com/zijin/plugin/bleprinterPlugin/BlePrinterPlugin" />
+        <source-file src="src/android/BlePrinterOperation.java" target-dir="src/com/zijin/plugin/bleprinterPlugin/BlePrinterPlugin" />
+        <source-file src="src/android/IPrinterOperation.java" target-dir="src/com/zijin/plugin/bleprinterPlugin/BlePrinterPlugin" />
+        <source-file src="src/android/PrintBean.java" target-dir="src/com/zijin/plugin/bleprinterPlugin/BlePrinterPlugin" />
+    </platform>
+</plugin>
